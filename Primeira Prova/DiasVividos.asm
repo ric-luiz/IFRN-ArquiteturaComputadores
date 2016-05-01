@@ -64,11 +64,11 @@ for_1:beq $10,$13, sai_for_1	#inicio do for
 	#####################verificar a outra condição para o ano ser bisexto###########################
 	div $15,$10,400		#verifica se é divisivel por 400			
 	mfhi $15
-	if_2: beqz $15,fim_2
+	if_2: beq $15,$0,fim_2
 	
 		div $15,$10,100	 #verifica se é divisivel por 100
 		mfhi $15
-		if_3: beqz $15,fim_2
+		if_3: beq $15,$0,fim_2
 		
 			div $15,$10,4	#verifica se é divisivel por 4
 			mfhi $15
@@ -93,7 +93,7 @@ for_2: beq $19,$16,sai_for_2
 	#-----------------------------------------bloco de codigos----------------------------------------#
 	slt $15,$16,$17
 	#Meses de 01 ate 07
-	if_6: beqz $15,else_6						
+	if_6: beq $15,$0,else_6						
 		#Verifico se é o mes colocado na entrada
 		if_9: bne $16,$9,fim_9
 			#Adicionamos os dias que foi inserido inicialmente	
@@ -104,7 +104,7 @@ for_2: beq $19,$16,sai_for_2
 		#Caso não seja a condição acima executamos normalmente a operação de add 30 ou 31 dias ao total
 		div $18,$16,2
 		mfhi $18
-		if_7: beqz $18,else_7
+		if_7: beq $18,$0,else_7
 			#meses Impares
 			addi $14,$14,31
 			j fim_7
@@ -131,7 +131,7 @@ for_2: beq $19,$16,sai_for_2
 		#Caso não seja a condição acima executamos normalmente a operação de add 30 ou 31 dias ao total					
 		div $18,$16,2
 		mfhi $18
-		if_8: beqz $18,else_8
+		if_8: beq $18,$0,else_8
 			#meses Impares
 			addi $14,$14,30
 			j fim_8
@@ -155,7 +155,7 @@ for_3: beq $19,$16,sai_for_3
 	#-----------------------------------------bloco de codigos----------------------------------------#
 	slt $15,$16,$17
 	#Meses de 01 ate 07
-	if_17: beqz $15,else_17						
+	if_17: beq $15,$0,else_17						
 		#Verifico se é o mes colocado na entrada
 		if_12: bne $16,$12,fim_12
 			#Adicionamos os dias que foi inserido inicialmente	
@@ -166,7 +166,7 @@ for_3: beq $19,$16,sai_for_3
 		#Caso não seja a condição acima executamos normalmente a operação de add 30 ou 31 dias ao total
 		div $18,$16,2
 		mfhi $18
-		if_13: beqz $18,else_13
+		if_13: beq $18,$0,else_13
 			#meses Impares
 			addi $14,$14,31
 			j fim_13
@@ -193,7 +193,7 @@ for_3: beq $19,$16,sai_for_3
 		#Caso não seja a condição acima executamos normalmente a operação de add 30 ou 31 dias ao total					
 		div $18,$16,2
 		mfhi $18
-		if_16: beqz $18,else_16
+		if_16: beq $18,$0,else_16
 			#meses Impares
 			addi $14,$14,30
 			j fim_16
