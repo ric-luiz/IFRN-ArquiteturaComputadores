@@ -3,22 +3,30 @@
 .text
 
 main:
-	#coordenadas x e y
-	addi $15,$0,12
-	addi $16,$0,30
 	
-	#Width e height da figura
-	addi $17,$0,15
-	addi $18,$0,15
+	update:
 	
-	jal quadrado
+		#coordenadas x e y
+		addi $15,$0,5
+		addi $16,$0,30	
+		#Width e height da figura
+		addi $17,$0,10
+		addi $18,$0,10
+	
+		jal quadrado		
+	
+	j update
+	
 	
 end: addi $2,$0,10
      syscall 
 
 quadrado:
 		addi $sp,$sp,-4 #tiramos o espaço de memoria
-		sw $ra, 4($sp)
+		sw $ra, ($sp)
+		#reseta os contadores
+		addi $12,$0,0
+		addi $11,$0,0	
 		
 		
 		row:beq $11,$18,end_row
@@ -39,8 +47,8 @@ quadrado:
 		end_row:
 		
 		
-		lw $ra, 0($sp)
-		addi $sp,$sp,4		 
+		lw $ra, ($sp)
+		addi $sp,$sp,4			 
      jr $ra     
                
 # x = $15
