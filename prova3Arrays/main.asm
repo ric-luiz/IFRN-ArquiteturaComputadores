@@ -7,7 +7,7 @@
 		lb $t7,characterer #carrega o *
 		#addi $v0,$0,5
 		#syscall
-		jal y
+		jal b_
 		jal imprimirMatriz
 								
 	end:li $v0,10
